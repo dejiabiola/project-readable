@@ -1,33 +1,39 @@
 import React from 'react'
-import { LoginStyles, ImageDiv, TextDiv } from './login.styles'
-import { Link } from 'react-router-dom'
+import { LoginStyles, ImageDiv, TextDiv, LoginForm, ForgotLink, Button, LoginGoogleIcon } from './login.styles'
 
 
 const Login = () => {
   return (
     <LoginStyles className="p-0">
-      <ImageDiv />
-      <TextDiv className="flex flex-col justify-center align-center">
-        <p>Welcome Back</p>
+      <ImageDiv className="" />
+      <TextDiv className="flex flex-col justify-center items-center font-login">
+      <div className="font-login">
+      <p>Welcome Back</p>
         <h1>Login to your Account</h1>
-        <form>
+        <LoginForm>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="password" />
+            <input type="email" name="email" id="password"  />
           </div>
           <div>
             <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password"/>
           </div>
-          <div>
-            <input type="checkbox" name="remember" id="remember"/>Remember me
-            <Link to="/forgot">
-              Forgot Password?
-            </Link>
+          <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center">
+          <input type="checkbox" name="remember" id="remember"/><span className="ml-3">Remember me</span> 
           </div>
-          <button type="submit">Login Now</button>
-          <button type="button">Or Sign-in with google</button>
-        </form>
+            <ForgotLink to="/forgot">
+              Forgot Password?
+            </ForgotLink>
+          </div>
+          <Button type="submit">Login Now</Button>
+          <Button type="button" googleLogin>
+          <LoginGoogleIcon />
+          Or Sign-in with google</Button>
+        </LoginForm>
+      </div>
+        
       </TextDiv>
     </LoginStyles>
   )
