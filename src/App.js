@@ -4,11 +4,13 @@ import appRoutes from './routes/routes'
 import AppStyles from "./AppStyles.styles.tw";
 
 const App = () => {
+  const { login, home, cartegory } = appRoutes
   return (
     <AppStyles>
       <Switch>
-        {/* <Route path='/' component={Home} /> */}
-        <Route path={appRoutes.login.path} component={appRoutes.login.component} exact />
+        <Route path={home.path} component={home.component} exact />
+        <Route path={login.path} component={login.component} exact />
+        <Route path={cartegory.path} component={cartegory.component} />
       </Switch>
     </AppStyles>
   );
