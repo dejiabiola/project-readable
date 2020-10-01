@@ -12,7 +12,7 @@ module.exports = {
   ],
   theme: {
     fontfamily: {
-      display: ["Helvetica", "sans-serif"],
+      'login': "roboto, sans-serif",
       body: ["Helvetica-Neue", "sans-serif"]
     },
     extend: {
