@@ -2,9 +2,9 @@ import React from 'react'
 import {PostPreviewDiv, VoteDownSvg, VoteUpSvg, PostDate, Title, Authur} from './PostPreview.styles'
 
 
-const PostPreview = () => {
+const PostPreview = ({ fromHome }) => {
   return (
-    <PostPreviewDiv>
+    <PostPreviewDiv fromHome={fromHome}>
       <div>
         <Title>The stranded goat</Title>
         <PostDate>27 - 04 - 1994</PostDate>
@@ -22,6 +22,7 @@ const PostPreview = () => {
           </div>
         </div>
       </div>
+      <span className="mt-2 bg-gray-500 p-2 py-0 inline-block rounded-full">cartegory</span>
     </PostPreviewDiv>
   )
 }

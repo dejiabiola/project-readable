@@ -12,8 +12,9 @@ export const PostPreviewDiv = styled.div`
   width: 500px;
   padding: 20px;
   margin-bottom: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: ${props => props.fromHome ? 0 : 'auto'};
+  margin-right: ${props => props.fromHome ? 0 : 'auto'};
+  /* background: ${props => props.fromHome ? 'red' : 'transparent'}; */
 
 
   & > div {
