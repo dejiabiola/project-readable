@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ReactComponent as ThumbUp } from '../../media/thumb-up.svg'
 import { ReactComponent as ThumbDown } from '../../media/thumb-down.svg'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -57,10 +57,9 @@ export const VoteDownSvg = styled(ThumbDown)`
 `
 
 
-export const Title = styled.h2`
+export const Title = styled(Link)`
   font-size: 24px;
   font-weight: bold;
-  
 `
 
 export const Authur = styled.p`

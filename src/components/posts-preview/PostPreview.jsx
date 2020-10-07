@@ -6,7 +6,7 @@ const PostPreview = ({ fromHome }) => {
   return (
     <PostPreviewDiv fromHome={fromHome}>
       <div>
-        <Title>The stranded goat</Title>
+        <Title to='/post'>The stranded goat</Title>
         <PostDate>27 - 04 - 1994</PostDate>
       </div>
       <div>
