@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {HomeStyleContainer, SidePanel, NewPostLink, MainPanel, CartegoryLink} from './home.styles'
 import PostPreview from '../../components/posts-preview/PostPreview'
+import { useDispatch, useSelector } from 'react-redux'
+import { handleSetCartegory, selectCategories } from '../../redux/cartegory/cartegorySlice'
 
 const Home = () => {
+  const categories = useSelector(selectCategories)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleSetCartegory())
+  }, [dispatch])
   return (
     <HomeStyleContainer>
       <SidePanel className="p-10 md:pt-16">
@@ -29,8 +37,12 @@ const Home = () => {
         </div>
         <div className="cartegories mb-16">
           <h2 className="text-xl font-bold font-sans mb-8">Cartegories</h2>
-          <div className="flex justify-around">
-          <CartegoryLink to='/cartegory/link'>Cartegory</CartegoryLink>
+          <div className="flex justify-center">
+          {
+            categories.map(category => (
+              <CartegoryLink to={`/category/${category.path}`} className="mx-2">{category.name}</CartegoryLink>
+            ))
+          }
           </div>
         </div>
         <div className="posts">

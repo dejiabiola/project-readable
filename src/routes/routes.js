@@ -16,7 +16,7 @@ const routes = {
     exact: true
   },
   cartegory: {
-    path: '/cartegory/:cartegory',
+    path: '/category/:category',
     component: Cartegory,
   },
   newPost: {

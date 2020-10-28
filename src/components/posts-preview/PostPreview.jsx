@@ -1,30 +1,34 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {PostPreviewDiv, VoteDownSvg, VoteUpSvg, PostDate, Title, Authur} from './PostPreview.styles'
+import { countUp, countDown, increment, decrement } from '../../redux/action'
+import { useDispatch, useSelector } from 'react-redux' 
 
-
-const PostPreview = ({ fromHome }) => {
+const PostPreview = ({ fromHome, post }) => {
+  const dispatch = useDispatch();
+  const voteUp = useSelector(countUp)
+  const voteDown = useSelector(countDown)
   return (
     <PostPreviewDiv fromHome={fromHome}>
       <div>
-        <Title to='/post'>The stranded goat</Title>
-        <PostDate>27 - 04 - 1994</PostDate>
+        <Title to={`/post/${post.id}`}>{post.title}</Title>
+        <PostDate>{post.timestamp}</PostDate>
       </div>
       <div>
-        <Authur>written by: Authur Meyer</Authur>
+        <Authur>written by: {post.author}</Authur>
         <div>
           <div>
-            <VoteUpSvg />
-            <span>28</span>
+            <VoteUpSvg onClick={() => dispatch(increment())} />
+            <span>{voteUp}</span>
           </div>
           <div>
-            <VoteDownSvg />
-            <span>8</span>
+            <VoteDownSvg onClick={() => dispatch(decrement())} />
+            <span>{voteDown}</span>
           </div>
         </div>
       </div>
-      <span className="mt-2 bg-gray-500 p-2 py-0 inline-block rounded-full">cartegory</span>
+      <span className="mt-2 bg-gray-500 p-2 py-0 inline-block rounded-full">{post.category}</span>
     </PostPreviewDiv>
   )
 }
 
-export default PostPreview
+export default memo(PostPreview)
