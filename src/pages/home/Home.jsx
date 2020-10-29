@@ -3,13 +3,16 @@ import {HomeStyleContainer, SidePanel, NewPostLink, MainPanel, CartegoryLink} fr
 import PostPreview from '../../components/posts-preview/PostPreview'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleSetCartegory, selectCategories } from '../../redux/cartegory/cartegorySlice'
+import { handleGetAllPosts, selectAllPosts } from '../../redux/post/postSlice'
 
 const Home = () => {
   const categories = useSelector(selectCategories)
+  const posts = useSelector(selectAllPosts)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(handleSetCartegory())
+    dispatch(handleGetAllPosts())
   }, [dispatch])
   return (
     <HomeStyleContainer>
@@ -48,10 +51,11 @@ const Home = () => {
         <div className="posts">
           <h2 className="text-xl font-bold font-sans mb-8">Posts</h2>
           <div className="flex flex-wrap justify-around">
-            <PostPreview fromHome />
-            <PostPreview fromHome/>
-            <PostPreview fromHome/>
-            <PostPreview fromHome/>
+          {
+            posts.map(post => (
+              <PostPreview fromHome key={post.id} post={post} />
+            ))
+          }
           </div>
         </div>
       </MainPanel>
